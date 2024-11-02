@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('memberships', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->enum('type', ['individual', 'organization']);
+            $table->enum('duration', ['1 year', '2 years']);
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('job')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('resident_country');
+            $table->string('phone');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('memberships');
+    }
+};
