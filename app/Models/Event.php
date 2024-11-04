@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'category_id',
+        'specialization',
+        'objective',
+        'main_axes',
+        'main_knowledge',
+        'main_skills',
+        'presentation_format',
+        'duration',
+        'duration_type',
+        'price',
+        'expert_id',
+        'event_id',
+        'consultation_id'
+    ];
 }
