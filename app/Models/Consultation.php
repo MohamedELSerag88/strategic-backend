@@ -15,9 +15,9 @@ class Consultation extends Model
         'goal',
         'summary',
         'stages',
-        'duration',
-        'consultations_id',
-        'course_id',
+        'duration'
     ];
+    public $search = ["name","goal"];
+
 
 }

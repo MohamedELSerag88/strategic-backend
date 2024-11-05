@@ -23,8 +23,6 @@ return new class extends Migration
             $table->date("end_date");
             $table->unsignedBigInteger('expert_id');
             $table->foreign('expert_id')->references('id')->on('experts');
-            $table->unsignedBigInteger('opinion_measurement_id')->nullable();
-            $table->foreign('opinion_measurement_id')->references('id')->on('opinion_measurements');
             $table->timestamps();
         });
     }

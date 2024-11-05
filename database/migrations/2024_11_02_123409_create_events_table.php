@@ -20,16 +20,13 @@ return new class extends Migration
             $table->text('main_axes');
             $table->text('main_knowledge');
             $table->text('main_skills');
-            $table->string('presentation_format:');
+            $table->string('presentation_format');
             $table->integer('duration');
             $table->string('duration_type');
             $table->float('price');
             $table->unsignedBigInteger('expert_id');
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->unsignedBigInteger('consultation_id')->nullable();
+
             $table->foreign('expert_id')->references('id')->on('experts');
-            $table->foreign('event_id')->references('id')->on('events');
-            $table->foreign('consultation_id')->references('id')->on('consultations');
             $table->timestamps();
         });
     }

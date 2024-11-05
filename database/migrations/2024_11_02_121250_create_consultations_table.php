@@ -19,9 +19,6 @@ return new class extends Migration
             $table->text('summary');
             $table->longText('stages');
             $table->string('duration');
-            $table->unsignedBigInteger('consultations_id')->nullable();
-            $table->foreign('consultations_id')->references('id')->on('consultations');
-            $table->integer('course_id')->nullable();
             $table->timestamps();
         });
     }

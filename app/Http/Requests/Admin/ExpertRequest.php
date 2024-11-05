@@ -26,8 +26,19 @@ class ExpertRequest extends FormRequest
             "training_courses" => "required",
             "academic_qualifications" => "required",
             "research" => "required",
-            "user_id" => "required|exists:users,id",
+            "nationality" => "required",
+            "resident_country" => "required",
+            "phone" => "required",
         ];
+        if (Request::isMethod('post')){
+            $validations["email"] = "required|email|unique:experts,email";
+            $validations["phone"] = "required|email|unique:experts,phone";
+        }
+        elseif(Request::isMethod('put')){
+            $url = explode('/',Request::url());
+            $validations["email"] = "required|email|unique:experts,email,".end($url).",id";
+            $validations["phone"] = "required|email|unique:experts,phone,".end($url).",id";
+        }
 
         return $validations;
     }

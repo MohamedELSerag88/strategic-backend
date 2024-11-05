@@ -24,7 +24,10 @@ class ExpertResource extends JsonResource
             "academic_qualifications" => $this->academic_qualifications ,
             "training_courses" => $this->training_courses ,
             "research" => $this->research ,
-            "user_id" => $this->user_id ,
+            "nationality" => $this->nationality ,
+            "resident_country" => $this->resident_country ,
+            "phone" =>$this->phone ,
+            "email" =>$this->email
         ];
     }
 }

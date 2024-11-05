@@ -18,6 +18,11 @@ class Expert extends Model
         'training_courses',
         'academic_qualifications',
         'research',
-        'user_id'
+        'nationality',
+        'resident_country',
+        'phone',
+        'email'
     ];
+
+    public $search = ["name", "about", "specialization","job"];
 }

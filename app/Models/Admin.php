@@ -18,6 +18,8 @@ class Admin extends Authenticatable implements JWTSubject
         'status'
     ];
 
+    public $search = ["name", "email"];
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

@@ -15,7 +15,6 @@ class DiscussionForum extends Model
         "domain",
         "participants",
         "start_date",
-        "end_date",
-        'discussion_forum_id'
+        "end_date"
     ];
 }

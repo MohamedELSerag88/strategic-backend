@@ -19,8 +19,6 @@ return new class extends Migration
             $table->integer("participants");
             $table->date("start_date");
             $table->date("end_date");
-            $table->unsignedBigInteger('discussion_forum_id');
-            $table->foreign('discussion_forum_id')->references('id')->on('discussion_forums');
             $table->timestamps();
         });
     }

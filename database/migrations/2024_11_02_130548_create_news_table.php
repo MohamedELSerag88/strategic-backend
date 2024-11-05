@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('publication_date');
             $table->text('summary');
-            $table->longText('text:');
+            $table->longText('text');
             $table->text('keywords');
             $table->string('main_image');
             $table->string('side_image');

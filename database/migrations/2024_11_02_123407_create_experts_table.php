@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('experts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('photo')->nullable();
             $table->text('about')->nullable();
             $table->string('specialization');
             $table->string('job');
@@ -21,8 +22,10 @@ return new class extends Migration
             $table->text('training_courses');
             $table->text('academic_qualifications');
             $table->text('research');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->text('nationality');
+            $table->text('resident_country');
+            $table->text('phone');
+            $table->text('email');
             $table->timestamps();
         });
     }

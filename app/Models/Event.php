@@ -19,8 +19,12 @@ class Event extends Model
         'duration',
         'duration_type',
         'price',
-        'expert_id',
-        'event_id',
-        'consultation_id'
+        'expert_id'
     ];
+
+    public $search = ["name", "email"];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

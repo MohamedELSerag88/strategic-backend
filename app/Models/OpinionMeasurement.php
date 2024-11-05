@@ -19,7 +19,6 @@ class OpinionMeasurement extends Model
         "start_date",
         "end_date",
         'expert_id',
-        'opinion_measurement_id'
     ];
 
 }

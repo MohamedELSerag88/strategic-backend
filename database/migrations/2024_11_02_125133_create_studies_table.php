@@ -22,8 +22,6 @@ return new class extends Migration
             $table->text('main_topics');
             $table->text('summary');
             $table->text('file')->nullable();
-            $table->unsignedBigInteger('study_id')->nullable();
-            $table->foreign('study_id')->references('id')->on('studies');
             $table->timestamps();
         });
     }
