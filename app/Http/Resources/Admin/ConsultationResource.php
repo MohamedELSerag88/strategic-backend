@@ -22,7 +22,7 @@ class ConsultationResource extends JsonResource
             "summary" => $this->summary,
             "stages" => $this->stages,
             "duration" => $this->duration,
-            "consultations_id" => $this->consultations_id,
+            "relatedConsultations_id" => $this->consultations->pluck("id")->toArray(),
             "course_id" => $this->course_id,
         ];
     }

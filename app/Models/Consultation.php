@@ -19,5 +19,13 @@ class Consultation extends Model
     ];
     public $search = ["name","goal"];
 
+    public function consultations(){
+        return $this->belongsToMany(Consultation::class,'consultation_related_consultations','consultation_id','related_id');
+    }
+
+    public function events(){
+        return $this->belongsToMany(Consultation::class,'consultation_related_events','consultation_id','event_id');
+    }
+
 
 }

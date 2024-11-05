@@ -23,8 +23,7 @@ class ConsultationRequest extends FormRequest
             "summary" => "required",
             "stages" => "required",
             "duration" => "required",
-            "consultations_id" => "",
-            "course_id" => "",
+            "relatedConsultations_id"=>"array"
         ];
 
         return $validations;
