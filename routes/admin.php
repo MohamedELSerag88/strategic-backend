@@ -25,6 +25,7 @@ Route::group([
         'middleware' => ['auth:admin']
     ], function ($router) {
         Route::get('dropdown/{model}', 'DropDownController@dropDownList');
+        Route::get('serviceable', 'DropDownController@serviceable');
         Route::apiResource('roles', 'RoleController');
         Route::apiResource('admins', 'AdminController');
         Route::apiResource('users', 'UserController');
@@ -38,6 +39,7 @@ Route::group([
         Route::apiResource('opinion_measurements', 'OpinionMeasurementController');
         Route::apiResource('discussion_forums', 'DiscussionForumController');
         Route::apiResource('news', 'NewsController');
+
     });
 
 });

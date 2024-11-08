@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('studies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
+            $table->string('title');
             $table->unsignedBigInteger('expert_id');
             $table->foreign('expert_id')->references('id')->on('experts');
             $table->string('specialization');

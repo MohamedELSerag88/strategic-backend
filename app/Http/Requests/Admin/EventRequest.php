@@ -19,6 +19,7 @@ class EventRequest extends FormRequest
         $validations =  [
             //
             "category_id" => "required|integer|exists:categories,id",
+            "title" => "required",
             "specialization" => "required",
             "objective" => "required",
             "main_axes" => "required",
@@ -28,10 +29,12 @@ class EventRequest extends FormRequest
             "duration" => "required",
             "duration_type" => "required",
             "price" => "required",
-            "content" => "required",
-            "expert_id" => "required|integer|exists:users,id",
-            "event_id" => "required|integer|exists:events,id",
-            "consultation_id" => "required|integer|exists:consultations,id",
+            "month" => "required",
+            "week_number" => "required",
+            "from_date" => "required",
+            "to_date" => "required",
+            "expert_id" => "required|integer|exists:experts,id",
+            "serviceable_data" => "array",
         ];
 
         return $validations;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Admin;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,6 +19,7 @@ class EventResource extends JsonResource
         return [
             "id" => $this->id ,
             "category_id" => $this->category_id ,
+            "title" => $this->title ,
             "specialization" => $this->specialization ,
             "objective" => $this->objective ,
             "main_axes" => $this->main_axes ,
@@ -28,9 +30,26 @@ class EventResource extends JsonResource
             "duration_type" => $this->duration_type ,
             "price" => $this->price ,
             "content" => $this->content ,
+            "month" => $this->eventDates?->month,
+            "week_number"=> $this->eventDates?->week_number,
+            "from_date" =>$this->eventDates?->from_date,
+            "to_date" => $this->eventDates?->to_date,
             "expert_id" => $this->expert_id ,
-            "event_id" => $this->event_id ,
-            "consultation_id" => $this->consultation_id ,
+            "category" => new CategoryResource($this->category),
+            "expert" => new ExpertResource($this->expert),
+            "related_services" =>$this->services->map(function($service){
+                if(str_contains($service->serviceable_type,"Event")){
+                    $name =$service->serviceable->category->name .' - '.$service->serviceable->title;
+                }
+                else{
+                    $name = $service->serviceable->name ?? $service->serviceable->title;
+                }
+                return [
+                    "id" => $service->serviceable_id,
+                    "name" => $name,
+                    "type" => $service->serviceable_type
+                ];
+            })
         ];
     }
 }

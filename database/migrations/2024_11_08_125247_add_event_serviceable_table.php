@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_related_events', function (Blueprint $table) {
+        //
+        Schema::create('event_serviceable', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('related_id');
             $table->unsignedBigInteger('event_id');
+            $table->morphs('serviceable');
             $table->foreign('event_id')->references('id')->on('events');
-            $table->foreign('related_id')->references('id')->on('events');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -27,7 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('event_serviceable');
         //
-        Schema::dropIfExists('event_related_events');
     }
 };

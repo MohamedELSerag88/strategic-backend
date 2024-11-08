@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->string('title');
             $table->string('specialization');
             $table->text('objective');
             $table->text('main_axes');
@@ -25,7 +26,6 @@ return new class extends Migration
             $table->string('duration_type');
             $table->float('price');
             $table->unsignedBigInteger('expert_id');
-
             $table->foreign('expert_id')->references('id')->on('experts');
             $table->timestamps();
         });

@@ -11,6 +11,7 @@ class Study extends Model
 
     protected $fillable = [
         'type',
+        'title',
         'expert_id',
         'specialization',
         'page_numbers',
