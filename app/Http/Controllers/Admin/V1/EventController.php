@@ -114,7 +114,11 @@ class EventController extends Controller
         if(!$event){
             return $this->response->statusFail("event not found");
         }
-
+        EventServices::where('event_id' ,$id)->orWhere([
+            'serviceable_type'=> Event::class,
+            'serviceable_id'=>$id
+        ])->delete();
+        EventDate::where('event_id' ,$id)->delete();
         Event::where('id' ,$id)->delete();
         return $this->response->statusOk("event deleted successfully");
     }

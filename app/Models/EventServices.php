@@ -9,7 +9,11 @@ class EventServices extends Model
 {
     use HasFactory;
     protected $table = 'event_serviceable';
-    protected $fillable = ["key"];
+    protected $fillable = [
+        'serviceable_type',
+        'serviceable_id',
+        'event_id'
+    ];
 
     public function serviceable()
     {
