@@ -27,7 +27,7 @@ class NewsResource extends JsonResource
             "side_image" => $this->side_image ,
             "editor_name" => $this->editor_name ,
             "editing_date" => $this->editing_date ,
-            "new_id" => $this->new_id
+            "relatedNews_id" => $this->news->pluck("id")->toArray(),
         ];
     }
 }

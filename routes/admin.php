@@ -26,6 +26,7 @@ Route::group([
     ], function ($router) {
         Route::get('dropdown/{model}', 'DropDownController@dropDownList');
         Route::get('serviceable', 'DropDownController@serviceable');
+        Route::post('upload-file', 'MediaController@upload');
         Route::apiResource('roles', 'RoleController');
         Route::apiResource('admins', 'AdminController');
         Route::apiResource('users', 'UserController');

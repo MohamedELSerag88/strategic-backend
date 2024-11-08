@@ -29,7 +29,8 @@ class NewsRequest extends FormRequest
             "side_image" => "required",
             "editor_name" => "required",
             "editing_date" => "required",
-            "new_id" => "exists:news,id",
+            "relatedNews_id" => "array",
+            "relatedNews_id.*" => "integer|exists:news,id",
         ];
 
         return $validations;

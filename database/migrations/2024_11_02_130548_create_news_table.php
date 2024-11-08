@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string('side_image');
             $table->string('editor_name');
             $table->date('editing_date');
-            $table->unsignedBigInteger('new_id');
-            $table->foreign('new_id')->references('id')->on('news');
             $table->timestamps();
         });
     }

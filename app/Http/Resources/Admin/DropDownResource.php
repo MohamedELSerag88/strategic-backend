@@ -16,7 +16,7 @@ class DropDownResource extends JsonResource
     {
         return [
             "id" => $this->id ,
-            "name" => $this->name ?? $this->key
+            "name" => $this->name ?? $this->key ?? $this->title
         ];
     }
 }

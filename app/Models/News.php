@@ -20,7 +20,10 @@ class News extends Model
         'main_image',
         'side_image',
         'editor_name',
-        'editing_date',
-        'new_id'
+        'editing_date'
     ];
+
+    public function news(){
+        return $this->belongsToMany(News::class,'news_related_news','news_id','related_id');
+    }
 }
