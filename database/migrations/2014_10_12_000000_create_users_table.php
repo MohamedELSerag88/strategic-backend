@@ -15,11 +15,14 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone');
             $table->string('photo')->nullable();
+            $table->string('job')->nullable();
             $table->enum('contact_type',['PHONE',"EMAIL"])->default('EMAIL');
             $table->boolean('notification')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('reset_password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

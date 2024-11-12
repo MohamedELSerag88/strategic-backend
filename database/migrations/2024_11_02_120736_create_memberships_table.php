@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->enum('type', ['individual', 'organization']);
+            $table->enum('type', ['individual', 'organization'])->default('individual');
             $table->enum('duration', ['1 year', '2 years']);
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('job')->nullable();
+            $table->string('organization_name')->nullable();
             $table->string('nationality')->nullable();
             $table->string('resident_country');
-            $table->string('phone');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
