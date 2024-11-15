@@ -22,6 +22,8 @@
      'profile_updated_successfully' => 'تم تحديث الملف الشخصي بنجاح',
      'name_updated_successfully' => 'تم تحديث الاسم بنجاح',
      'Membership_created_successfully' => "تم الأشتراك بنجاح",
+     'ConsultationRequest_created_successfully' => "تم أرسال الطلب بنجاح",
+     'event_created_successfully' => "تم أرسال الطلب بنجاح",
      'Membership_exist' => "لقد أشتركت بالفعل",
      "membership_not_found" => "لا يوجد أشتراك",
      "page_not_found" => "لا يوجد بيانات للصفحه"

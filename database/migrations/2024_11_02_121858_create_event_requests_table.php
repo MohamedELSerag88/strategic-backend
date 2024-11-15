@@ -11,23 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consultation_requests', function (Blueprint $table) {
+        Schema::create('event_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('event_type');
+            $table->string('event_presentation');
             $table->string('name');
-            $table->string('job_position');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('org_status');
-            $table->string('org_name');
+            $table->string('job');
             $table->string('org_type');
-            $table->date('establishment_date');
-            $table->string('ownership_type');
-            $table->string('means_type');
+            $table->string('phone');
+            $table->string('org_name');
             $table->string('headquarter_country');
-            $table->string('employees_number');
-            $table->string('external_offices_number');
-            $table->string('annual_budget');
-            $table->string('suffers_area')->nullable();
+            $table->unsignedBigInteger('event_id');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->string('event_country');
+            $table->date('event_date')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });
@@ -38,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('consultation_requests');
+        Schema::dropIfExists('event_requests');
     }
 };

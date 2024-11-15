@@ -18,7 +18,19 @@ class Study extends Model
         'publication_date',
         'main_topics',
         'summary',
-        'file',
-        'study_id'
+        'file'
     ];
+
+    public function expert(){
+        return $this->belongsTo(Expert::class);
+    }
+
+    public function studies(){
+        return $this->belongsToMany(Study::class,'study_related_studies', 'study_id', 'related_id');
+    }
+
+    public function services()
+    {
+        return $this->hasMany(StudyServices::class, 'study_id');
+    }
 }

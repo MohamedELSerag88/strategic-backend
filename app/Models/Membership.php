@@ -9,9 +9,19 @@ class Membership extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'type','duration','start_date','end_date','job','nationality','resident_country','phone'];
+    protected $fillable = [
+        'name',
+        'type',
+       'duration',
+        'job',
+        'nationality',
+        'resident_country',
+        'email',
+        'phone',
+        'password',
+       'contact_type',
+        'organization_name',
+        'photo',
+    ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\User;
 
 use App\Http\Requests\ResponseShape as FormRequest;
 
-class MembershipRequest extends FormRequest
+class EventRequestRequest extends FormRequest
 {
 
 
@@ -16,18 +16,18 @@ class MembershipRequest extends FormRequest
     public function rules(): array
     {
         $validations =  [
+            "event_id" => "required|exists:events,id",
+            "event_type" => "required",
+            "event_presentation" => "required",
             "name" => "required",
-            "type" => "required",
-            "duration" => "required",
             "job" => "required",
-            "email" => "required",
-            "organization_name" => "",
-            "nationality" => "required",
-            "resident_country" => "required",
-            "photo" => "",
+            "org_type" => "required",
             "phone" => "required",
-            "password" => "required|confirmed",
-            "contact_type" =>""
+            "org_name" => "required",
+            "headquarter_country" => "required",
+            "event_country" => "required",
+            "event_date" => "required",
+            "notes" => "",
         ];
 
         return $validations;

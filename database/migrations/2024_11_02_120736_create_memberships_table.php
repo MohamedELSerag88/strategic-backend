@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->enum('type', ['individual', 'organization'])->default('individual');
-            $table->enum('duration', ['1 year', '2 years']);
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('organization_name')->nullable();
+            $table->string('name');
+            $table->string('type');
+            $table->string('duration');
+            $table->string('job')->nullable();
             $table->string('nationality')->nullable();
             $table->string('resident_country');
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('password');
+            $table->string('contact_type')->nullable();
+            $table->string('organization_name')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

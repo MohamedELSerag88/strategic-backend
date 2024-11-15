@@ -18,15 +18,18 @@ class StudyRequest extends FormRequest
     {
         $validations =  [
             //
+            "title" => "required",
             "type" => "required",
-            "expert_id" => "required",
+            "expert_id" => "required|exists:experts,id",
             "specialization" => "required",
             "page_numbers" => "required",
             "publication_date" => "required",
             "main_topics" => "required",
             "summary" => "required",
             "file" => "required",
-            "study_id" => "required|exists:studies,id",
+            "study_ids" => "array",
+            "study_ids.*" => "exists:studies,id",
+            "serviceable_data" => "array",
         ];
 
         return $validations;

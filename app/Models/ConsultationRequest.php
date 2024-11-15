@@ -10,8 +10,12 @@ class ConsultationRequest extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'status',
+        'name',
+        'job_position',
+        'email',
+        'phone',
+        'org_type',
+        'org_status',
         'org_name',
         'establishment_date',
         'ownership_type',
