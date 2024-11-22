@@ -16,15 +16,7 @@ class MembershipRequest extends FormRequest
     public function rules(): array
     {
         $validations =  [
-            "user_id" => "required|exists:users,id",
-            "type" => "required|in:individual,organization",
-            "duration" => "required",
-            "start_date" => "required",
-            "end_date" => "required",
-            "job" => "required",
-            "nationality" => "required",
-            "resident_country" => "required",
-            "phone" => "required",
+            "status" => "required|in:pending,approved,rejected"
         ];
 
         return $validations;

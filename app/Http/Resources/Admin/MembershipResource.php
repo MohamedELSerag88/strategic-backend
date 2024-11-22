@@ -16,15 +16,18 @@ class MembershipResource extends JsonResource
     {
         return [
             "id" => $this->id ,
+            "name" => $this->name ,
             "type" => $this->type ,
             "duration" => $this->duration ,
-            "start_date" => $this->start_date,
-            "end_date" => $this->end_date,
             "job" => $this->job,
             "nationality" => $this->nationality,
             "resident_country" => $this->resident_country,
+            "email" => $this->email,
             "phone" => $this->phone,
-            "user" => new UserResource($this->user)
+            "contact_type" => $this->contact_type,
+            "organization_name" => $this->organization_name,
+            "photo" => $this->photo,
+            "status" => $this->status,
         ];
     }
 }

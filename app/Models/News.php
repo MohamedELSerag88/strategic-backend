@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\NewsFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class News extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'field',
@@ -22,6 +23,11 @@ class News extends Model
         'editor_name',
         'editing_date'
     ];
+
+    protected static function newFactory()
+    {
+        return NewsFactory::new();
+    }
 
     public function news(){
         return $this->belongsToMany(News::class,'news_related_news','news_id','related_id');

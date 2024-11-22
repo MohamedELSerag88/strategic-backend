@@ -20,11 +20,11 @@ class DiscussionForumRequest extends FormRequest
             "title" => "required",
             "subject" => "required",
             "domain" => "required",
-            "participants" => "required",
             "start_date" => "required",
             "end_date" => "required",
-            "content" => "required",
-            "discussion_forum_id" => "required"
+            "forum_ids" => "array",
+            "forum_ids.*" => "exists:discussion_forums,id",
+            "serviceable_data" => "array",
         ];
 
         return $validations;

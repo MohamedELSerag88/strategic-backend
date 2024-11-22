@@ -35,6 +35,8 @@ Route::group([
         Route::apiResource('events', 'EventController')->only(['index', 'show']);
         Route::apiResource('experts', 'ExpertController')->only(['index', 'show']);
         Route::apiResource('studies', 'StudiesController')->only(['index', 'show']);
+        Route::apiResource('opinion_measurements', 'OpinionMeasurementController')->only(['index', 'show']);
+        Route::apiResource('discussion_forums', 'DiscussionForumController')->only(['index', 'show']);
         Route::apiResource('news', 'NewsController')->only(['index', 'show']);
         Route::post('consultation-request', 'ConsultationRequestController@store');
         Route::post('event-request', 'EventRequestController@store');

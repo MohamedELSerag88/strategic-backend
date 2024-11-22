@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string("title");
             $table->text("subject");
             $table->string("domain");
-            $table->integer("participants");
             $table->date("start_date");
             $table->date("end_date");
             $table->timestamps();

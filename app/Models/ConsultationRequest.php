@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\ConsultationRequestFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class ConsultationRequest extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -27,4 +28,9 @@ class ConsultationRequest extends Model
         'suffers_area',
         'notes'
     ];
+
+    protected static function newFactory()
+    {
+        return ConsultationRequestFactory::new();
+    }
 }

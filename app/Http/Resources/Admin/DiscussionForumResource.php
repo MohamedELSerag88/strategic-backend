@@ -19,11 +19,28 @@ class DiscussionForumResource extends JsonResource
             "title" => $this->title ,
             "subject" => $this->subject ,
             "domain" => $this->domain ,
-            "participants" => $this->participants ,
             "start_date" => $this->start_date ,
             "end_date" => $this->end_date ,
-            "content" => $this->content ,
-            "discussion_forum_id" => $this->discussion_forum_id ,
+            "forum_ids" => $this->forums->pluck("id")->toArray() ,
+            "related_forums" =>$this->forums->map(function($study){
+                return [
+                    "id" => $study->id,
+                    "name" => $study->title,
+                ];
+            }),
+            "related_services" =>$this->services->map(function($service){
+                if(str_contains($service->serviceable_type,"Event")){
+                    $name =$service->serviceable->category->name .' - '.$service->serviceable->title;
+                }
+                else{
+                    $name = $service->serviceable->name ?? $service->serviceable->title;
+                }
+                return [
+                    "id" => $service->serviceable_id,
+                    "name" => $name,
+                    "type" => $service->serviceable_type
+                ];
+            })
         ];
     }
 }

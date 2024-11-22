@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\MembershipFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Membership extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -23,5 +24,10 @@ class Membership extends Model
         'organization_name',
         'photo',
     ];
+
+    protected static function newFactory()
+    {
+        return MembershipFactory::new();
+    }
 
 }

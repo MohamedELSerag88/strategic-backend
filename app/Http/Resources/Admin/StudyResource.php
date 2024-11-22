@@ -25,6 +25,8 @@ class StudyResource extends JsonResource
             "main_topics" => $this->main_topics ,
             "summary" => $this->summary ,
             "file" => $this->file ,
+            "expert" => new ExpertResource($this->expert),
+            "study_ids" => $this->studies->pluck("id")->toArray(),
             "related_studies" =>$this->studies->map(function($study){
                 return [
                     "id" => $study->id,

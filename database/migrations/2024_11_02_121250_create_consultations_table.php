@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->enum('scope_of_work',['Establish','Develop','Analysis','Measurement','Supervision','Other'])->default('Establish');
+            $table->string('scope_of_work');
             $table->text('goal');
             $table->text('summary');
             $table->longText('stages');

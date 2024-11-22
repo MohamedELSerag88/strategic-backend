@@ -17,18 +17,8 @@ class ConsultationRequestRequest extends FormRequest
     public function rules(): array
     {
         $validations =  [
-            "user_id" => "required|exists:users,id",
-            "status" => "required",
-            "org_name" => "required",
-            "establishment_date" => "required",
-            "ownership_type" => "required",
-            "means_type" => "required",
-            "headquarter_country" => "required",
-            "employees_number" => "required",
-            "external_offices_number" => "required",
-            "annual_budget" => "required",
-            "suffers_area" => "required",
-            "notes" => "",
+
+            "status" => "required|in:pending,approved,rejected",
         ];
 
         return $validations;

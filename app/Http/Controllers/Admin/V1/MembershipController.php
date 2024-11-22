@@ -30,23 +30,14 @@ class MembershipController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(MembershipRequest $request)
-    {
-        $data = $request->validated();
-        $membership = Membership::create($data);
-        return $this->response->statusOk("Membership created successfully");
 
-    }
 
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        $membership = Membership::where('id' ,$id)->first();
+        $membership = Membership::find($id);
         if(!$membership){
             return $this->response->statusFail("membership not found");
         }
@@ -68,17 +59,5 @@ class MembershipController extends Controller
         return $this->response->statusOk("membership updated successfully");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        $membership = Membership::where('id' ,$id)->first();
-        if(!$membership){
-            return $this->response->statusFail("membership not found");
-        }
 
-        Membership::where('id' ,$id)->delete();
-        return $this->response->statusOk("membership deleted successfully");
-    }
 }

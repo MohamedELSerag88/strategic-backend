@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\StudyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Study extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'type',
@@ -21,6 +22,10 @@ class Study extends Model
         'file'
     ];
 
+    protected static function newFactory()
+    {
+        return StudyFactory::new();
+    }
     public function expert(){
         return $this->belongsTo(Expert::class);
     }

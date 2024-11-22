@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\EventRequestFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class EventRequest extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table ="event_requests";
     protected $fillable = [
         'event_id',
@@ -23,4 +24,13 @@ class EventRequest extends Model
         'event_date',
         'notes'
     ];
+
+    protected static function newFactory()
+    {
+        return EventRequestFactory::new();
+    }
+
+    public function event(){
+        return $this->belongsTo(Event::class);
+    }
 }

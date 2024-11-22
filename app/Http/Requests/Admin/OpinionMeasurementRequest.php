@@ -23,11 +23,13 @@ class OpinionMeasurementRequest extends FormRequest
             "domain" => "required",
             "targeted_segment" => "required",
             "geographical_scope" => "required",
-            "participants" => "required|array",
+            "participants" => "required|integer",
             "start_date" => "required",
             "end_date" => "required",
-            "expert_id" => "required",
-            "opinion_measurement_id" => "exists:opinion_measurements,id",
+            "expert_id" => "required|exists:experts,id",
+            "opinion_ids" => "array",
+            "opinion_ids.*" => "exists:opinion_measurements,id",
+            "serviceable_data" => "array",
         ];
 
         return $validations;

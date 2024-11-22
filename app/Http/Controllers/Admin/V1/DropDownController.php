@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\ActivePipeline;
 use App\Http\Filters\RelationPipeline;
 use App\Http\Resources\Admin\DropDownResource;
+use App\Models\AppConfig;
 use App\Models\Consultation;
 use App\Models\DiscussionForum;
 use App\Models\Event;
 use App\Models\OpinionMeasurement;
 use App\Models\Study;
 use Illuminate\Pipeline\Pipeline;
-
+use Illuminate\Http\Request;
 
 class DropDownController extends Controller
 {
@@ -101,6 +102,15 @@ class DropDownController extends Controller
         } catch (\Exception $e) {
             return $this->response->statusFail($e->getMessage());
         }
+    }
+
+    public function appConfigDropDown(Request $request){
+        $keys = explode(",",$request->input("keys"));
+        $data = AppConfig::whereIn("key", $keys)->get()->pluck("value","key");
+        $data = $data->map(function ($item, $key) {
+            return  explode(",",$item);
+        });
+        return $this->response->statusOk(["data" => $data]);
     }
 
 }

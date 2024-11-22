@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\PaginationPipeline;
 use App\Http\Filters\SortPipeline;
-use App\Http\Requests\Admin\AdminRequest;
 use App\Http\Requests\ResponseShape as FormRequest;
 use App\Http\Response\Response;
 use Illuminate\Pipeline\Pipeline;

@@ -24,8 +24,31 @@ class OpinionMeasurementResource extends JsonResource
             "participants" => $this->participants ,
             "start_date" => $this->start_date ,
             "end_date" => $this->end_date ,
-            "expert_id" => $this->expert_id ,
-            "opinion_measurement_id" => $this->opinion_measurement_id ,
+            "opinion_ids"=>$this->opinions->pluck("id")->toArray() ,
+            "expert_id"=>$this->expert_id,
+            "expert" => [
+                "id" => $this->expert_id,
+                "name" => $this->expert->name ?? "",
+            ],
+            "related_opinions" =>$this->opinions->map(function($study){
+                return [
+                    "id" => $study->id,
+                    "name" => $study->title,
+                ];
+            }),
+            "related_services" =>$this->services->map(function($service){
+                if(str_contains($service->serviceable_type,"Event")){
+                    $name =$service->serviceable->category->name .' - '.$service->serviceable->title;
+                }
+                else{
+                    $name = $service->serviceable->name ?? $service->serviceable->title;
+                }
+                return [
+                    "id" => $service->serviceable_id,
+                    "name" => $name,
+                    "type" => $service->serviceable_type
+                ];
+            })
         ];
     }
 }
