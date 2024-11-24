@@ -26,8 +26,7 @@ class LoginController extends Controller {
         if(!$admin)
             return $this->response->statusFail( 'Admin not found');
 
-
-        if (! $token = auth('admin')->login($admin)) {
+        if (! $token = auth('admin')->attempt($credentials)) {
             return $this->response->statusFail(['message' => 'Wrong Credentials']);
         }
         $admin->token = $token;

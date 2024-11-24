@@ -32,7 +32,7 @@ class AuthController extends Controller {
             return $this->response->statusFail(trans('messages.user_not_found'));
 
 
-        if (! $token = auth('user')->login($user)) {
+        if (! $token = auth('user')->attempt($credentials)) {
             return $this->response->statusFail(['message' => 'Wrong Credentials']);
         }
         $user->token = $token;

@@ -23,13 +23,17 @@ Route::group([
     Route::post('reset-password', 'AuthController@resetPassword');
     Route::post('register', 'AuthController@register');
     Route::post('memberships', 'MembershipController@store');
-
+    Route::post('appConfig-Dropdown', 'DropDownController@appConfigDropDown');
+    Route::get('page/{slug}', 'PagesController@show');
+    Route::get('pages', 'PagesController@index');
     Route::group([
         'middleware' => ['auth:user']
     ], function ($router) {
         Route::post('upload-file', 'MediaController@upload');
+        Route::get('dropdown/{model}', 'DropDownController@dropDownList');
 
-        Route::get('page/{slug}', 'PagesController@show');
+        Route::get('serviceable', 'DropDownController@serviceable');
+
         Route::apiResource('consultations', 'ConsultationController')->only(['index', 'show']);
         Route::get('categories', 'CategoryController@index');
         Route::apiResource('events', 'EventController')->only(['index', 'show']);

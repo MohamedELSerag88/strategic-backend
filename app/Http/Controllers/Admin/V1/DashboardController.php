@@ -9,6 +9,8 @@ use App\Models\Event;
 use App\Models\EventRequest;
 use App\Models\Expert;
 use App\Models\Membership;
+use App\Models\News;
+use App\Models\OpinionMeasurement;
 use App\Models\Study;
 use App\Models\User;
 use App\Models\ConsultationRequest;
@@ -27,6 +29,8 @@ class DashboardController extends Controller
             "consultation_request_count" => ConsultationRequest::count(),
             "expert_count" => Expert::count(),
             "forum_count" => DiscussionForum::count(),
+            "news_count" => News::count(),
+            "opinion_count" => OpinionMeasurement::count(),
         ];
         return $this->response->statusOk(["data" =>$data]);
     }
