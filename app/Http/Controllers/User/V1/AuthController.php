@@ -10,6 +10,7 @@ use App\Http\Resources\User\LoginResource;
 use App\Jobs\SendMail;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class AuthController extends Controller {
 
@@ -29,13 +30,14 @@ class AuthController extends Controller {
         $user = User::where(['email' =>$credentials['email']])->first();
 
         if(!$user)
-            return $this->response->statusFail(trans('messages.user_not_found'));
+            return $this->response->statusFail(trans('messages.user_not_found'), 404);
 
 
         if (! $token = auth('user')->attempt($credentials)) {
-            return $this->response->statusFail(['message' => 'Wrong Credentials']);
+            return $this->response->statusFail(['message' => 'Wrong Credentials'],401);
         }
         $user->token = $token;
+        $user->expire = Carbon::now()->addHours(1)->timestamp;
         $data = ['data' => new LoginResource($user), "message" => trans('messages.user_founded_successfully')];
         return $this->response->statusOk($data);
     }

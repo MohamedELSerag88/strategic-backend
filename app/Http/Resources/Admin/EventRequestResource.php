@@ -16,6 +16,10 @@ class EventRequestResource extends JsonResource
     {
         return [
             "id" => $this->id ,
+            "event" => [
+                "id"=>$this->event_id ,
+                "name" => $this->event?->title
+            ],
             "event_type" => $this->event_type ,
             "event_presentation" => $this->event_presentation ,
             "name" => $this->name,

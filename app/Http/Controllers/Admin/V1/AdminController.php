@@ -65,6 +65,9 @@ class AdminController extends Controller
         if(!$admin){
             return $this->response->statusFail("admin not found");
         }
+        if($data['password']){
+            $data['password'] =\Hash::make($data['password']);
+        }
         Admin::where('id' ,$id)->update($data);
         return $this->response->statusOk("admin updated successfully");
     }

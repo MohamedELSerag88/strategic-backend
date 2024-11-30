@@ -4,7 +4,10 @@ namespace App\Exceptions;
 
 use App\Http\Response\Response;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
@@ -59,6 +62,16 @@ class Handler extends ExceptionHandler
 
             if ($e instanceof ModelNotFoundException) {
                 return $response->notFound('Resource not found');
+            }
+
+            if ($e instanceof AuthenticationException) {
+                return $response->unauthorized('Unauthenticated!');
+            }
+            if ($e instanceof HttpResponseException ) {
+                return $response->unauthorized('UnAuthorized!',401);
+            }
+            if ($e instanceof ValidationException) {
+                return $response->bad($e->getMessage());
             }
             return $response->statusFail($e->getMessage().' '.$e->getFile().' '.$e->getLine());
         }

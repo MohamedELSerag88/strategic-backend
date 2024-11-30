@@ -20,7 +20,7 @@ class ConsultationRequestRequest extends FormRequest
             "job_position"=> "required",
             "email" => "required",
             "phone"=> "required",
-            "org_type"=> "required",
+            "org_type"=> "",
             "org_status"=> "required",
             "org_name"=> "required",
             "establishment_date"=> "required",
