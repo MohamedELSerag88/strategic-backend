@@ -12,7 +12,7 @@ class OpinionServices extends Model
     protected $fillable = [
         'serviceable_type',
         'serviceable_id',
-        'measurement_id'
+        'opinion_measurement_id'
     ];
 
     public function serviceable()

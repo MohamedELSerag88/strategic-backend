@@ -37,7 +37,7 @@ class OpinionMeasurement extends Model
 
     public function services()
     {
-        return $this->hasMany(OpinionServices::class, 'measurement_id');
+        return $this->hasMany(OpinionServices::class, 'opinion_measurement_id');
     }
 
 }

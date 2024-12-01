@@ -24,7 +24,7 @@ class ConsultationRequestRequest extends FormRequest
             "org_status"=> "required",
             "org_name"=> "required",
             "establishment_date"=> "required",
-            "ownership_type"=> "required",
+            "ownership_type"=> "",
             "means_type"=> "required",
             "headquarter_country"=> "required",
             "employees_number"=> "required",

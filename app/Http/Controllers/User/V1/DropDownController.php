@@ -14,8 +14,6 @@ use App\Models\OpinionMeasurement;
 use App\Models\Study;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
-use function App\Http\Controllers\Admin\V1\app;
-use function App\Http\Controllers\Admin\V1\collect;
 
 class DropDownController extends Controller
 {

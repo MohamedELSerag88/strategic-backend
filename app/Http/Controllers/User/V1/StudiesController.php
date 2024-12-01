@@ -7,6 +7,7 @@ use App\Http\Filters\KeySearchPipeline;
 use App\Http\Filters\PaginationPipeline;
 use App\Http\Filters\RelationPipeline;
 use App\Http\Filters\SortPipeline;
+use App\Http\Requests\Admin\StudyRequest;
 use App\Http\Resources\User\StudyResource;
 use App\Models\Study;
 use Illuminate\Pipeline\Pipeline;
@@ -19,7 +20,7 @@ class StudiesController extends Controller
     public function index()
     {
         $events = app(Pipeline::class)
-            ->send(Study::query())
+            ->send(Study::query()->where('status',1))
             ->through([
                 PaginationPipeline::class,
                 RelationPipeline::class,
@@ -33,7 +34,20 @@ class StudiesController extends Controller
     }
 
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StudyRequest $request)
+    {
+        $data = $request->validated();
+        $data['status'] = 0;
+        $studyIds = $data['study_ids'];
+        unset($data['study_ids']);
+        $study = Study::create($data);
+        $study->studies()->attach($studyIds);
+        return $this->response->statusOk("Study created successfully");
 
+    }
 
     /**
      * Display the specified resource.

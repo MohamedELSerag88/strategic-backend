@@ -19,7 +19,8 @@ class Study extends Model
         'publication_date',
         'main_topics',
         'summary',
-        'file'
+        'file',
+        'status'
     ];
 
     protected static function newFactory()

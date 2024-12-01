@@ -30,6 +30,7 @@ class StudyRequest extends FormRequest
             "study_ids" => "array",
             "study_ids.*" => "exists:studies,id",
             "serviceable_data" => "array",
+            "status" =>""
         ];
 
         return $validations;
